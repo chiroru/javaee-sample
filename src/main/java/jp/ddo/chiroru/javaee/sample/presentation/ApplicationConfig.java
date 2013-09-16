@@ -1,8 +1,11 @@
 package jp.ddo.chiroru.javaee.sample.presentation;
 
 import java.util.Set;
+
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
+
+import jp.ddo.chiroru.javaee.sample.common.validation.validator.ValidationExceptionMapper;
 
 @ApplicationPath("webresources")
 public class ApplicationConfig
@@ -32,5 +35,6 @@ public class ApplicationConfig
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(jp.ddo.chiroru.javaee.sample.presentation.BookResources.class);
+        resources.add(ValidationExceptionMapper.class);
     }
 }

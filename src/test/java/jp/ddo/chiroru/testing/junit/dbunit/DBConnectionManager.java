@@ -27,7 +27,7 @@ public class DBConnectionManager {
                         CONNECTION_INFO.getUsername(),
                         CONNECTION_INFO.getPassword());
             }
-            return conn;
+            return new LoggingConnection(conn);
         } catch (SQLException e) {
             throw new RuntimeException("データベースの接続の作成に失敗しました.");
         }

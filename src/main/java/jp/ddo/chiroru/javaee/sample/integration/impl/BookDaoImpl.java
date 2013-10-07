@@ -1,20 +1,13 @@
 package jp.ddo.chiroru.javaee.sample.integration.impl;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import jp.ddo.chiroru.javaee.sample.domain.Book;
+import jp.ddo.chiroru.javaee.sample.integration.BookDao;
 
 public class BookDaoImpl
+        extends AbstractJpaDAO<Book>
         implements BookDao {
 
-    @PersistenceContext
-    private EntityManager em;
-
-    @Override
-    public Book findById(Integer id) {
-
-        return em.find(Book.class, id);
+    public BookDaoImpl() {
+        setClazz(Book.class);
     }
-
 }

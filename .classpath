@@ -31,6 +31,11 @@
       <attribute value="jar:file:/C:/Users/shin/.m2/repository/javax/javaee-web-api/7.0/javaee-web-api-7.0-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/com/google/guava/guava/15.0/guava-15.0.jar" sourcepath="M2_REPO/com/google/guava/guava/15.0/guava-15.0-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/shin/.m2/repository/com/google/guava/guava/15.0/guava-15.0-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
   <classpathentry kind="var" path="M2_REPO/org/glassfish/jersey/containers/jersey-container-servlet/2.2/jersey-container-servlet-2.2.jar" sourcepath="M2_REPO/org/glassfish/jersey/containers/jersey-container-servlet/2.2/jersey-container-servlet-2.2-sources.jar">
     <attributes>
       <attribute value="jar:file:/C:/Users/shin/.m2/repository/org/glassfish/jersey/containers/jersey-container-servlet/2.2/jersey-container-servlet-2.2-javadoc.jar!/" name="javadoc_location"/>
@@ -54,11 +59,6 @@
   <classpathentry kind="var" path="M2_REPO/org/glassfish/jersey/core/jersey-common/2.2/jersey-common-2.2.jar" sourcepath="M2_REPO/org/glassfish/jersey/core/jersey-common/2.2/jersey-common-2.2-sources.jar">
     <attributes>
       <attribute value="jar:file:/C:/Users/shin/.m2/repository/org/glassfish/jersey/core/jersey-common/2.2/jersey-common-2.2-javadoc.jar!/" name="javadoc_location"/>
-    </attributes>
-  </classpathentry>
-  <classpathentry kind="var" path="M2_REPO/com/google/guava/guava/14.0.1/guava-14.0.1.jar" sourcepath="M2_REPO/com/google/guava/guava/14.0.1/guava-14.0.1-sources.jar">
-    <attributes>
-      <attribute value="jar:file:/C:/Users/shin/.m2/repository/com/google/guava/guava/14.0.1/guava-14.0.1-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/org/glassfish/hk2/hk2-api/2.2.0-b14/hk2-api-2.2.0-b14.jar" sourcepath="M2_REPO/org/glassfish/hk2/hk2-api/2.2.0-b14/hk2-api-2.2.0-b14-sources.jar">

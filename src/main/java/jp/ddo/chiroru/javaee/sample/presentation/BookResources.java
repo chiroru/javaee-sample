@@ -25,7 +25,7 @@ public class BookResources {
     public List<Book> getBooks() {
         List<Book> books = new ArrayList<>();
         Book b = new Book();
-        b.setId(1);
+        b.setId(1L);
         b.setName("name1");
         b.setDescription("description1");
         b.setBookshelfId(1);
@@ -41,7 +41,7 @@ public class BookResources {
     public Book getBookById(@Min(5) @PathParam("id") String id,
             @ValidCollection(elementType=String.class, constraints={Email.class}) @QueryParam("mail") List<String> mails) {
         Book b = new Book();
-        b.setId(1);
+        b.setId(1L);
         b.setName("name1");
         b.setDescription("description1");
         b.setBookshelfId(1);

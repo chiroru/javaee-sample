@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+    <BOOK ID="1" NAME="進撃の巨人" VOLUME="1" DESCRIPTION="巨人と戦う。" PICTURE="shingeki.png" BOOKSHELF_ID="1" CREATED_AT="2013-09-09 09:09:09.000000" CREATED_USER="SHIN" UPDATED_AT="2013-09-09 09:09:09.000000" UPDATED_USER="SHIN" />
+</dataset>

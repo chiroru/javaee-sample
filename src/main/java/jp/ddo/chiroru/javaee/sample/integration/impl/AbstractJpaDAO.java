@@ -10,6 +10,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import jp.ddo.chiroru.javaee.sample.integration.CRUDDao;
+
 /**
  * ジェネリックDaoによってJPAに基づくCRUD処理を実現するための実装を提供する抽象クラスです。<br />
  * 
@@ -17,7 +19,7 @@ import javax.persistence.criteria.Root;
  *
  * @param <T> JPAのエンティティ
  */
-public abstract class AbstractJpaDAO<T extends Serializable> {
+public abstract class AbstractJpaDAO<T extends Serializable> implements CRUDDao<T> {
 
     private Class< T > clazz;
 

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <settings>
+        <setting name="defaultExecutorType" value="REUSE" />
+        <setting name="mapUnderscoreToCamelCase" value="true" />
+        <setting name="logImpl" value="SLF4J" />
+    </settings>
+    <typeAliases>
+        <typeAlias type="jp.ddo.chiroru.javaee.sample.domain.Book" alias="book" />
+    </typeAliases>
+    <environments default="production">
+        <environment id="testing">
+            <transactionManager type="JDBC" />
+            <dataSource type="UNPOOLED">
+                <property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+                <property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:XE" />
+                <property name="username" value="UT" />
+                <property name="password" value="UT" />
+            </dataSource>
+        </environment>
+        <environment id="production">
+            <transactionManager type="MANAGED" />
+            <dataSource type="JNDI">
+                <property name="data_source" value="togo" />
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="jp/co/chintai/chintainet/integration/bukkensearch/dao/impl/CtBukkenSearch4SummaryDaoImplMapper.xml" />
+        <mapper resource="jp/co/chintai/chintainet/integration/master/dao/impl/CtMstEkiDaoImpl.xml" />
+    </mappers>
+</configuration>

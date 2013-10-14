@@ -1,4 +1,4 @@
-package jp.ddo.chiroru.javaee.sample.domain;
+package jp.ddo.chiroru.javaee.sample.presentation.format;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
@@ -20,5 +20,4 @@ public class TimestampAdapter
     public String marshal(Timestamp v) throws Exception {
         return f.format(v);
     }
-
 }

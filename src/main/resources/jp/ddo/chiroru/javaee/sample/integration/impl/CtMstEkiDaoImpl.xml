@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+    namespace="jp.co.chintai.chintainet.integration.master.dao.impl.CtMstEkiDaoImpl">
+
+    <select id="searchEkiByEkiPk"
+        parameterType="EkiPkVo"
+        resultType="CtMstEkiVo" >
+        SELECT
+            BUKKEN_CNT,
+            EKINAME,
+            EKINO,
+            EKISEQ,
+            NY_BUKKEN_CNT,
+            SHOP_CNT,
+            SORT_KEY,
+            STARTEKI_FLG,
+            STOP_FLG, ENSENCD,
+            EKICD
+        FROM CT_MST_EKI
+        WHERE ((ENSENCD = #{ensencd}) AND (EKICD = #{ekicd}))
+    </select>
+
+    <select id="searchEkiPkListByEkino"
+        parameterType="integer"
+        resultType="EkiPkVo">
+        SELECT
+            BUKKEN_CNT,
+            EKINAME,
+            EKINO,
+            EKISEQ,
+            NY_BUKKEN_CNT,
+            SHOP_CNT,
+            SORT_KEY,
+            STARTEKI_FLG,
+            STOP_FLG,
+            ENSENCD, 
+            EKICD
+        FROM CT_MST_EKI
+        WHERE (EKINO = #{ekino})
+    </select>
+
+</mapper>

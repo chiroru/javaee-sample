@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+    namespace="jp.co.chintai.chintainet.integration.bukkensearch.dao.impl.CtBukkenSearch4SummaryDaoImpl">
+
+    <select id="selectRntPropSumGroupByRailwayLine"
+        parameterType="map"
+        resultType="jp.co.chintai.chintainet.spec.RentPropSumOfStation">
+
+        SELECT ENSENCD , SUBSTR(EKICD, 7) AS EKICD, EKINAME, COUNT(*) AS
+        bukkenCnt
+        FROM (
+        (
+        SELECT ENSENCD_1 AS ENSENCD, EKICD_1 AS EKICD, EKINAME_1 AS EKINAME
+        FROM
+        CT_BUKKEN_SEARCH
+        <where>
+            <foreach item="ekiPk" index="index" collection="list"
+                open="" separator="OR" close="">
+                EKICD_1 = #{ekiPk.ensencd}||#{ekiPk.ekicd}
+            </foreach>
+        </where>
+        <if test="nayose == true">
+            AND NY_FLG = 1
+        </if>
+        ) UNION ALL (
+        SELECT ENSENCD_2 AS ENSENCD, EKICD_2 AS EKICD, EKINAME_2 AS EKINAME
+        FROM
+        CT_BUKKEN_SEARCH
+        <where>
+            <foreach item="ekiPk" index="index" collection="list"
+                open="" separator="OR" close="">
+                EKICD_2 = #{ekiPk.ensencd}||#{ekiPk.ekicd}
+            </foreach>
+        </where>
+        <if test="nayose == true">
+            AND NY_FLG = 1
+        </if>
+        ) UNION ALL (
+        SELECT ENSENCD_3 AS ENSENCD, EKICD_3 AS EKICD, EKINAME_3 AS EKINAME
+        FROM
+        CT_BUKKEN_SEARCH
+        <where>
+            <foreach item="ekiPk" index="index" collection="list"
+                open="" separator="OR" close="">
+                EKICD_3 = #{ekiPk.ensencd}||#{ekiPk.ekicd}
+            </foreach>
+        </where>
+        <if test="nayose == true">
+            AND NY_FLG = 1
+        </if>
+        )
+        ) GROUP BY ENSENCD, EKICD, EKINAME
+        ORDER BY ENSENCD
+    </select>
+
+    <select id="selectRntPropSumGroupByLatLngPref"
+        parameterType="map"
+        resultType="jp.co.chintai.chintainet.spec.RentPropSumOfLatLngPref">
+        SELECT
+            PREFCD,
+            LATLNG_PREF_X AS LATITUDE,
+            LATLNG_PREF_Y AS LONGITUDE,
+            COUNT(*) AS BUKKENCNT
+        FROM (
+            SELECT
+                PREFCD,
+                LATLNG_PREF_X,
+                LATLNG_PREF_Y
+            FROM
+            CT_BUKKEN_SEARCH
+            WHERE LATLNG_PREF_X BETWEEN #{latlngRectangle.lowerLeftLatitude} AND #{latlngRectangle.upperRightLatitude}
+            AND LATLNG_PREF_Y BETWEEN #{latlngRectangle.lowerLeftLongitude} AND #{latlngRectangle.upperRIghtLongitude}
+            <if test="nayose == true">
+                AND NY_FLG = 1
+            </if>
+            <if test="chinryofrom != null">
+                <if test="shikikin == true and tyusya == true">
+            AND (((CHINRYO + KANRI_KIN) + CHUSHA_KIN) >= ?)
+                </if>
+            </if>
+            <if test="chinryoto != null">
+                <if test="shikikin == true and tyusya == true">
+            <![CDATA[
+            AND (((CHINRYO + KANRI_KIN) + CHUSHA_KIN) <= ?)
+            ]]>
+                </if>
+            </if>
+            <if test="shikikin == true">
+            AND FDEPOSIT = ?
+            </if>
+            <if test="reikin == true">
+            AND FREWARD = ?
+            </if>
+            <if test="madoricdSet != null">
+            AND (MADORICD = ?)
+            </if>
+            <if test="senmensekifrom == true">
+            AND SEN_MENSEKI >= ?
+            </if>
+            <if test="senmensekito == true">
+            <![CDATA[
+            AND SEN_MENSEKI <= ?
+            ]]>
+            </if>
+        ) GROUP BY PREFCD, LATLNG_PREF_X, LATLNG_PREF_Y
+        ORDER BY PREFCD
+    </select>
+
+</mapper>

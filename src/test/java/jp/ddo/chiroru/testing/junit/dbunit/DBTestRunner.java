@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class DBTestRunner
-        extends BlockJUnit4ClassRunner {
+extends BlockJUnit4ClassRunner {
 
     protected static Logger L = LoggerFactory.getLogger(DBTestRunner.class);
     private Class<?> testTargetClass;
@@ -38,7 +38,7 @@ public class DBTestRunner
     }
 
     private class InvokeDBTestMethod
-            extends InvokeMethod {
+    extends InvokeMethod {
 
         private FrameworkMethod testMethod;
         private Object testTarget;

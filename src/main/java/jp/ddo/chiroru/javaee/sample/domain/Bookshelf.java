@@ -4,24 +4,15 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import jp.ddo.chiroru.javaee.sample.presentation.format.TimestampAdapter;
 
-@XmlAccessorType(XmlAccessType.FIELD) 
-@XmlRootElement(name = "Book")
-@Entity
-@Table(name = "BOOK", schema = "UT")
-public class Book
+public class Bookshelf
 implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -31,15 +22,6 @@ implements Serializable {
     private Long id;
 
     private String name;
-
-    private Integer volume;
-
-    private String description;
-
-    private String picture;
-
-    @Column(name ="BOOKSHELF_ID")
-    private Integer bookshelfId;
 
     @XmlElement(name = "createdAt", required = true) 
     @XmlJavaTypeAdapter(TimestampAdapter.class)
@@ -57,15 +39,7 @@ implements Serializable {
     @Column(name = "UPDATED_USER")
     private String updatedUser;
 
-    public Book() {}
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public Bookshelf() {}
 
     public String getName() {
         return name;
@@ -73,38 +47,6 @@ implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getVolume() {
-        return volume;
-    }
-
-    public void setVolume(Integer volume) {
-        this.volume = volume;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
-
-    public Integer getBookshelfId() {
-        return bookshelfId;
-    }
-
-    public void setBookshelfId(Integer bookshelfId) {
-        this.bookshelfId = bookshelfId;
     }
 
     public Timestamp getCreatedAt() {
@@ -137,5 +79,9 @@ implements Serializable {
 
     public void setUpdatedUser(String updatedUser) {
         this.updatedUser = updatedUser;
+    }
+
+    public static long getSerialversionuid() {
+        return serialVersionUID;
     }
 }

@@ -144,6 +144,11 @@
     <version>1.8</version>
     <scope>compile</scope>
 </dependency>
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>3.2.3</version>
+    </dependency>
   </dependencies>
 
   <build>

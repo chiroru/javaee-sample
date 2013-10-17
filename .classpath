@@ -331,4 +331,9 @@
       <attribute value="jar:file:/C:/Users/shin/.m2/repository/org/slf4j/jcl-over-slf4j/1.7.5/jcl-over-slf4j-1.7.5-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/mybatis/mybatis/3.2.3/mybatis-3.2.3.jar" sourcepath="M2_REPO/org/mybatis/mybatis/3.2.3/mybatis-3.2.3-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/shin/.m2/repository/org/mybatis/mybatis/3.2.3/mybatis-3.2.3-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
 </classpath>

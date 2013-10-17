@@ -1,6 +1,7 @@
 package jp.ddo.chiroru.testing.junit.external;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Properties;
 
 import org.h2.tools.Server;
@@ -57,6 +58,27 @@ extends ExternalResource {
         return "jdbc:h2:" + server.getURL() + "/" + dbName;
     }*/
 
+    public void start() throws SQLException {
+        L.info("Execute H2DatabaseServerResource before method.Start up H2 Database Server...");
+        server = Server.createTcpServer("-baseDir", configuration.getBaseDir());
+        server.start();
+        L.info("H2 Database Server started.");
+        Properties info = new Properties();
+        info.setProperty("user", configuration.getUserName());
+        info.setProperty("password", configuration.getPassword());
+        Connection conn = org.h2.Driver.load().connect(configuration.getUrl(), info);
+        try {
+            conn.createStatement()
+            .execute("CREATE SCHEMA IF NOT EXISTS " + configuration.getSchema());
+        } finally {
+            JdbcUtils.closeSilently(conn);
+        }
+    }
+    
+    public void stop() {
+        server.stop();
+    }
+    
     private void printStartLog() {
         L.info("Initialize H2DatabaseServerResource.");
         L.info("[Loaded Properties] --------------------------------------------------");

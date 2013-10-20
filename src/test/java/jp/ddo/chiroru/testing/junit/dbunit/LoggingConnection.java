@@ -26,15 +26,19 @@ public class LoggingConnection implements Connection {
     private Connection conn;
     
     public LoggingConnection(Connection conn) {
-        int c = counter.incrementAndGet();
-        System.out.println("[" + c + "] connection created.");
+        counter.incrementAndGet();
+        System.out.println("[" + counter + "] connection created.");
         this.conn = conn;
     }
 
     @Override
     public void close() {
-        int c = counter.incrementAndGet();
-        System.out.println("[" + c + "] connection closed.");
+        System.out.println("[" + counter + "] connection closed.");
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

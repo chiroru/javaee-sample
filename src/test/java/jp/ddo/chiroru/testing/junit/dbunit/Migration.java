@@ -19,6 +19,7 @@ public class Migration {
     }
 
     public void migrate() {
+        flyway.clean();
         flyway.migrate();
     }
 

@@ -9,17 +9,17 @@
         <setting name="mapUnderscoreToCamelCase" value="true" />
         <setting name="logImpl" value="SLF4J" />
     </settings>
-    <typeAliases>
+<!--     <typeAliases>
         <typeAlias type="jp.ddo.chiroru.javaee.sample.domain.Book" alias="book" />
-    </typeAliases>
+    </typeAliases> -->
     <environments default="production">
         <environment id="testing">
             <transactionManager type="JDBC" />
             <dataSource type="UNPOOLED">
-                <property name="driver" value="oracle.jdbc.driver.OracleDriver" />
-                <property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:XE" />
-                <property name="username" value="UT" />
-                <property name="password" value="UT" />
+                <property name="driver" value="${jdbc.driver}" />
+                <property name="url" value="${jdbc.url}" />
+                <property name="username" value="${jdbc.username}" />
+                <property name="password" value="${jdbc.password}" />
             </dataSource>
         </environment>
         <environment id="production">
@@ -30,7 +30,6 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="jp/co/chintai/chintainet/integration/bukkensearch/dao/impl/CtBukkenSearch4SummaryDaoImplMapper.xml" />
-        <mapper resource="jp/co/chintai/chintainet/integration/master/dao/impl/CtMstEkiDaoImpl.xml" />
+        <mapper resource="jp/ddo/chiroru/javaee/sample/integration/impl/mybatis/BookshelfDaoImplMapper.xml" />
     </mappers>
 </configuration>
